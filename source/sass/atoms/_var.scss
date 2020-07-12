@@ -1,0 +1,36 @@
+/*
+變數
+*/
+
+//顏色
+$main-color: #C3AC92;
+$mainliter-color: #AB8FCE;
+$mainlitest-color: #D5C7E7;
+
+$button-color: #75AA9c;
+$button-color-hover:#54a892;
+
+
+//灰階
+$red-color: #AA7587;
+$green-color: #75AA9c;
+$blue-color: #7D8BBA;
+$gray-color: #646464;
+$gray-color-lighter: #DEDEDE;
+$gray-color-lightest: #d8d8d8;
+$white-color: #ffffff;
+$box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.5);
+$box-shadow-lighter: 0px 3px 6px rgba(0, 0, 0, 0.2);
+
+
+$error-color: $red-color;
+
+//字體
+$font-family-serif: "Libre Baskerville", serif;
+$font-family-sans: "微軟正黑體", "Microsoft JhengHei", "Segoe UI", sans-serif;
+$font-color: $gray-color;
+$font-size-l: 24px;
+$font-size-m: 20px;
+$font-size: 16px;
+$font-size-s: 14px;
+$font-size-xs: 12px;

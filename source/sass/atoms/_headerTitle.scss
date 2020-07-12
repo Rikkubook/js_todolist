@@ -1,0 +1,22 @@
+/*
+原子 表頭
+*/
+
+//==========原子==========
+
+.a_headerTitle {
+  position: absolute;
+  padding: 4px 40px;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: $main-color;
+  color: $white-color;
+}
+
+//==========修飾符==========
+
+.a_headerTitle--error {
+  background-color: $error-color;
+  color: $white-color;
+}

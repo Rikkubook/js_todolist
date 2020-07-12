@@ -1,0 +1,132 @@
+/*
+ 組織 導覽列
+*/
+
+//==========組織==========
+.o_header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 40px;
+  background-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+.o_header__subsystem {
+  h1 {
+    line-height: 70px;
+    display: inline-block;
+    margin-right: 40px;
+    font-size: 40px;
+    font-family: $font-family-serif;
+    color: $white-color;
+    vertical-align: middle;
+  }
+}
+
+.o_header__online {
+  line-height: 70px;
+  display: inline-block;
+  margin-right: 15px;
+  p {
+    display: inline-block;
+    vertical-align: middle;
+    color: #ffffff;
+  }
+}
+
+//==========特有分子==========
+
+.m_menu {
+  vertical-align: middle;
+  line-height: 70px;
+  display: inline-block;
+}
+
+.m_menu__item {
+  display: inline-block;
+  a {
+    display: inline-block;
+    min-width: 100px;
+    padding: 5px 10px;
+    text-align: center;
+    line-height: normal;
+    color: $white-color;
+    text-decoration: none;
+    &:hover {
+      color: $sec-color;
+    }
+  }
+}
+
+.m_menu__item--active a {
+  background-color: $sec-color;
+  border-radius: 5px;
+  &:hover {
+    color: $white-color;
+  }
+}
+
+//==========特有原子==========
+
+.a_logo {
+  margin-left: 15px;
+  display: inline-block;
+  width: 70px;
+  height: 70px;
+  background: url("../img/bg-logo.png");
+  background-size: cover;
+  vertical-align: middle;
+}
+
+.o_header__onlineImg {
+  display: inline-block;
+  vertical-align: middle;
+  width: 25px;
+  height: 25px;
+  margin-right: 5px;
+}
+
+.o_header__onlineImg--success {
+  background-image: url("../../img/online-success.svg");
+  background-size: cover;
+}
+
+.o_header__onlineImg--error {
+  background-image: url("../../img/online-error.svg");
+  background-size: cover;
+}
+
+//==========RWD==========
+
+@media (max-width: 767px) {
+  .o_header {
+    display: flex;
+  }
+
+  .o_header__subsystem h1 {
+    font-size: 28px;
+    line-height: 60px;
+    margin-right: 10px;
+  }
+
+  .o_header__online {
+    line-height: 60px;
+    p {
+      display: none;
+    }
+  }
+
+  .m_menu {
+    line-height: 60px;
+  }
+
+  .a_logo {
+    margin-left: 15px;
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    background: url("../img/bg-logo.png");
+    background-size: cover;
+    vertical-align: middle;
+  }
+}

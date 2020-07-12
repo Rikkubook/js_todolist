@@ -1,0 +1,412 @@
+//********************************************
+//   gride-maxToMin檔案 迴圈 -- 2020/01/10 已經測試
+// ********************************************
+
+//為了讓gutter可以設定絕對數值
+
+// 只有此處會用到的變數寫在當支
+
+$gutter-width: 40px; //隔線間距離
+$grid-num: 12;
+// $breakpoint-df:575px; 不同於bootstrap以手機為主因此沒有此斷點
+$breakpoint-sm: 576px; //max-width: 576px 手機以下 .col-xs-#{$i}
+$breakpoint-md: 768px; //max-width: 768px 手機-平版 .col-sm-#{$i}
+$breakpoint-lg: 960px; //max-width:: 992px 平板-桌機  .col-md-#{$i}
+$breakpoint-xl: 1200px; //max-width: 1200px 桌機-大桌機 min-width .col-lg-#{$i} .col-lg-#{$i}
+
+.container {
+  max-width: 960px;
+  margin: 10px auto;
+  padding-right: $gutter-width/2; //所有加上gutter
+  padding-left: $gutter-width/2; //所有加上gutter
+}
+.box {
+  height: 50px;
+  margin: 10px 0;
+  background: rgb(74, 74, 184);
+}
+.box-other {
+  background-color: rgb(246, 153, 153);
+}
+.row {
+  display: flex;
+  margin-left: -($gutter-width/2); //減回外部上gutter
+  margin-right: -($gutter-width/2); //減回外部上gutter
+  flex-wrap: wrap;
+}
+
+%col {
+  position: relative;
+  min-height: 1px;
+  padding-left: $gutter-width/2;
+  padding-right: $gutter-width/2; //所有加上gutter
+  max-width: 100%;
+  flex: 0 0 100%;
+}
+
+@for $i from 1 through $grid-num + 1 {
+  //先桌機1200以上 預設值
+  .col-#{$i} {
+    @extend %col;
+  }
+}
+
+
+@for $i from 1 through $grid-num {
+.col-#{$i} {
+    max-width: 100% * ($i / $grid-num);
+    flex: 0 0 (100% * ($i / $grid-num));
+}
+}
+
+
+@media (max-width: $breakpoint-xl) {
+  //max-width: 1200px 桌機-大桌機 .col-lg-#{$i}
+  @for $i from 1 through $grid-num {
+    .col-lg-#{$i} {
+      max-width: 100% * ($i / $grid-num);
+      flex: 0 0 (100% * ($i / $grid-num));
+    }
+  }
+}
+@media (max-width: $breakpoint-lg) {
+  //max-width:: 992px 平板-桌機  .col-md-#{$i}
+  @for $i from 1 through $grid-num {
+    .col-md-#{$i} {
+      max-width: 100% * ($i / $grid-num);
+      flex: 0 0 (100% * ($i / $grid-num));
+    }
+  }
+}
+@media (max-width: $breakpoint-md) {
+  //max-width: 768px 手機-平版 .col-sm-#{$i}
+  @for $i from 1 through $grid-num {
+    .col-sm-#{$i} {
+      max-width: 100% * ($i / $grid-num);
+      flex: 0 0 (100% * ($i / $grid-num));
+    }
+  }
+}
+
+@media (max-width: $breakpoint-sm) {
+  //max-width: 576px 手機以下 .col-xs-#{$i}
+  @for $i from 1 through $grid-num {
+    .col-xs-#{$i} {
+      max-width: 100% * ($i / $grid-num);
+      flex: 0 0 (100% * ($i / $grid-num));
+    }
+  }
+}
+
+//********************************************
+//   padding/margin迴圈
+// ********************************************
+
+// 只有此處會用到的變數寫在當支
+
+//此處是為了大寫到小
+$mixin-num: 10;
+$mixin-px: 5;
+
+//=========padding 迴圈變數===========
+
+//此處是為了大寫到小
+
+
+//max-width: 1200px 大桌機以上 預設值
+@for $i from 0 through $mixin-num {
+  .pl-#{$i * $mixin-px} {
+    padding-left: ($i * $mixin-px) + px !important;
+  }
+  .pr-#{$i * $mixin-px} {
+    padding-right: ($i * $mixin-px) + px !important;
+  }
+  .pt-#{$i * $mixin-px} {
+    padding-top: ($i * $mixin-px) + px !important;
+  }
+  .pb-#{$i * $mixin-px} {
+    padding-bottom: ($i * $mixin-px) + px !important;
+  }
+  .px-#{$i * $mixin-px} {
+    padding-left: ($i * $mixin-px) + px !important;
+    padding-right: ($i * $mixin-px) + px !important;
+  }
+  .py-#{$i * $mixin-px} {
+    padding-top: ($i * $mixin-px) + px !important;
+    padding-bottom: ($i * $mixin-px) + px !important;
+  }
+}
+
+
+@media (max-width: $breakpoint-xl) {
+  //max-width: 1200px 桌機-大桌機 .col-lg-#{$i}
+  @for $i from 0 through $mixin-num {
+    .pl-lg-#{$i * $mixin-px} {
+      padding-left: ($i * $mixin-px) + px !important;
+    }
+    .pr-lg-#{$i * $mixin-px} {
+      padding-right: ($i * $mixin-px) + px !important;
+    }
+    .pt-lg-#{$i * $mixin-px} {
+      padding-top: ($i * $mixin-px) + px !important;
+    }
+    .pb-lg-#{$i * $mixin-px} {
+      padding-bottom: ($i * $mixin-px) + px !important;
+    }
+    .px-lg-#{$i * $mixin-px} {
+      padding-left: ($i * $mixin-px) + px !important;
+      padding-right: ($i * $mixin-px) + px !important;
+    }
+    .py-lg-#{$i * $mixin-px} {
+      padding-top: ($i * $mixin-px) + px !important;
+      padding-bottom: ($i * $mixin-px) + px !important;
+    }
+  }
+}
+@media (max-width: $breakpoint-lg) {
+  //max-width:: 992px 平板-桌機  .col-md-#{$i}
+  @for $i from 0 through $mixin-num {
+    .pl-md-#{$i * $mixin-px} {
+      padding-left: ($i * $mixin-px) + px !important;
+    }
+    .pr-md-#{$i * $mixin-px} {
+      padding-right: ($i * $mixin-px) + px !important;
+    }
+    .pt-md-#{$i * $mixin-px} {
+      padding-top: ($i * $mixin-px) + px !important;
+    }
+    .pb-md-#{$i * $mixin-px} {
+      padding-bottom: ($i * $mixin-px) + px !important;
+    }
+    .px-md-#{$i * $mixin-px} {
+      padding-left: ($i * $mixin-px) + px !important;
+      padding-right: ($i * $mixin-px) + px !important;
+    }
+    .py-md-#{$i * $mixin-px} {
+      padding-top: ($i * $mixin-px) + px !important;
+      padding-bottom: ($i * $mixin-px) + px !important;
+    }
+  }
+}
+
+@media (max-width: $breakpoint-md) {
+  //max-width: 768px 手機-平版 .col-sm-#{$i}
+  @for $i from 0 through $mixin-num {
+    .pl-sm-#{$i * $mixin-px} {
+      padding-left: ($i * $mixin-px) + px !important;
+    }
+    .pr-sm-#{$i * $mixin-px} {
+      padding-right: ($i * $mixin-px) + px !important;
+    }
+    .pt-sm-#{$i * $mixin-px} {
+      padding-top: ($i * $mixin-px) + px !important;
+    }
+    .pb-sm-#{$i * $mixin-px} {
+      padding-bottom: ($i * $mixin-px) + px !important;
+    }
+    .px-sm-#{$i * $mixin-px} {
+      padding-left: ($i * $mixin-px) + px !important;
+      padding-right: ($i * $mixin-px) + px !important;
+    }
+    .py-sm-#{$i * $mixin-px} {
+      padding-top: ($i * $mixin-px) + px !important;
+      padding-bottom: ($i * $mixin-px) + px !important;
+    }
+  }
+}
+
+@media (max-width: $breakpoint-sm) {
+  //max-width: 576px 手機以下 .col-xs-#{$i}
+  @for $i from 0 through $mixin-num {
+    .pl-xs-#{$i * $mixin-px} {
+      padding-left: ($i * $mixin-px) + px !important;
+    }
+    .pr-xs-#{$i * $mixin-px} {
+      padding-right: ($i * $mixin-px) + px !important;
+    }
+    .pt-xs-#{$i * $mixin-px} {
+      padding-top: ($i * $mixin-px) + px !important;
+    }
+    .pb-xs-#{$i * $mixin-px} {
+      padding-bottom: ($i * $mixin-px) + px !important;
+    }
+    .px-xs-#{$i * $mixin-px} {
+      padding-left: ($i * $mixin-px) + px !important;
+      padding-right: ($i * $mixin-px) + px !important;
+    }
+    .py-xs-#{$i * $mixin-px} {
+      padding-top: ($i * $mixin-px) + px !important;
+      padding-bottom: ($i * $mixin-px) + px !important;
+    }
+  }
+}
+
+//=========margin 迴圈變數===========
+
+//此處是大寫到小
+
+
+//max-width: 1200px 大桌機以上 預設值
+  @for $i from 0 through $mixin-num {
+    .ml-#{$i * $mixin-px} {
+      margin-left: ($i * $mixin-px) + px !important;
+    }
+    .mr-#{$i * $mixin-px} {
+      margin-right: ($i * $mixin-px) + px !important;
+    }
+    .mt-#{$i * $mixin-px} {
+      margin-top: ($i * $mixin-px) + px !important;
+    }
+    .mb-#{$i * $mixin-px} {
+      margin-bottom: ($i * $mixin-px) + px !important;
+    }
+    .mx-#{$i * $mixin-px} {
+      margin-left: ($i * $mixin-px) + px !important;
+      margin-right: ($i * $mixin-px) + px !important;
+    }
+    .my-#{$i * $mixin-px} {
+      margin-top: ($i * $mixin-px) + px !important;
+      margin-bottom: ($i * $mixin-px) + px !important;
+    }
+
+}
+@media (max-width: $breakpoint-xl) {
+  //max-width: 1200px 桌機-大桌機 .col-lg-#{$i}
+  @for $i from 0 through $mixin-num {
+    .ml-lg-#{$i * $mixin-px} {
+      margin-left: ($i * $mixin-px) + px !important;
+    }
+    .mr-lg-#{$i * $mixin-px} {
+      margin-right: ($i * $mixin-px) + px !important;
+    }
+    .mt-lg-#{$i * $mixin-px} {
+      margin-top: ($i * $mixin-px) + px !important;
+    }
+    .mb-lg-#{$i * $mixin-px} {
+      margin-bottom: ($i * $mixin-px) + px !important;
+    }
+    .mx-lg-#{$i * $mixin-px} {
+      margin-left: ($i * $mixin-px) + px !important;
+      margin-right: ($i * $mixin-px) + px !important;
+    }
+    .my-lg-#{$i * $mixin-px} {
+      margin-top: ($i * $mixin-px) + px !important;
+      margin-bottom: ($i * $mixin-px) + px !important;
+    }
+  }
+}
+
+@media (max-width: $breakpoint-lg) {
+  //max-width:: 992px 平板-桌機  .col-md-#{$i}
+  @for $i from 0 through $mixin-num {
+    .ml-md-#{$i * $mixin-px} {
+      margin-left: ($i * $mixin-px) + px !important;
+    }
+    .mr-md-#{$i * $mixin-px} {
+      margin-right: ($i * $mixin-px) + px !important;
+    }
+    .mt-md-#{$i * $mixin-px} {
+      margin-top: ($i * $mixin-px) + px !important;
+    }
+    .mb-md-#{$i * $mixin-px} {
+      margin-bottom: ($i * $mixin-px) + px !important;
+    }
+    .mx-md-#{$i * $mixin-px} {
+      margin-left: ($i * $mixin-px) + px !important;
+      margin-right: ($i * $mixin-px) + px !important;
+    }
+    .my-md-#{$i * $mixin-px} {
+      margin-top: ($i * $mixin-px) + px !important;
+      margin-bottom: ($i * $mixin-px) + px !important;
+    }
+  }
+}
+
+@media (max-width: $breakpoint-md) {
+  //max-width: 768px 手機-平版 .col-sm-#{$i}
+  @for $i from 0 through $mixin-num {
+    .ml-sm-#{$i * $mixin-px} {
+      margin-left: ($i * $mixin-px) + px !important;
+    }
+    .ml-sm-#{$i * $mixin-px} {
+      margin-right: ($i * $mixin-px) + px !important;
+    }
+    .mt-sm-#{$i * $mixin-px} {
+      margin-top: ($i * $mixin-px) + px !important;
+    }
+    .mb-sm-#{$i * $mixin-px} {
+      margin-bottom: ($i * $mixin-px) + px !important;
+    }
+    .mx-sm-#{$i * $mixin-px} {
+      margin-left: ($i * $mixin-px) + px !important;
+      margin-right: ($i * $mixin-px) + px !important;
+    }
+    .my-sm-#{$i * $mixin-px} {
+      margin-top: ($i * $mixin-px) + px !important;
+      margin-bottom: ($i * $mixin-px) + px !important;
+    }
+  }
+}
+
+@media (max-width: $breakpoint-sm) {
+  //max-width: 576px 手機以下 .col-xs-#{$i}
+  @for $i from 0 through $mixin-num {
+    .ml-xs-#{$i * $mixin-px} {
+      margin-left: ($i * $mixin-px) + px !important;
+    }
+    .mr-xs-#{$i * $mixin-px} {
+      margin-right: ($i * $mixin-px) + px !important;
+    }
+    .mt-xs-#{$i * $mixin-px} {
+      margin-top: ($i * $mixin-px) + px !important;
+    }
+    .mb-xs-#{$i * $mixin-px} {
+      margin-bottom: ($i * $mixin-px) + px !important;
+    }
+    .mx-xs-#{$i * $mixin-px} {
+      margin-left: ($i * $mixin-px) + px !important;
+      margin-right: ($i * $mixin-px) + px !important;
+    }
+    .my-xs-#{$i * $mixin-px} {
+      margin-top: ($i * $mixin-px) + px !important;
+      margin-bottom: ($i * $mixin-px) + px !important;
+    }
+  }
+}
+
+// .col-1 {
+//     width: 8.333333%;
+//   }
+//   .col-2 {
+//     width: 16.66667%;
+//   }
+//   .col-3 {
+//     width: 25%;
+//   }
+//   .col-4 {
+//     width: 33.33333%;
+//   }
+//   .col-5 {
+//     width: 41.66667%;
+//   }
+//   .col-6 {
+//     width: 50%;
+//   }
+//   .col-7 {
+//     width: 58.33333%;
+//   }
+//   .col-8 {
+//     width: 66.66667%;
+//   }
+//   .col-9 {
+//     width: 75%;
+//   }
+//   .col-10 {
+//     width: 83.33333%;
+//   }
+//   .col-11 {
+//     width: 91.66667%;
+//   }
+//   .col-12 {
+//     width: 100%;
+//   }

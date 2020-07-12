@@ -1,0 +1,92 @@
+/*
+ 原子 分頁
+*/
+
+//==========原子==========
+
+.a_pagination {
+  display: block;
+  text-align: center;
+  font-size: 0;
+  background: $gray-color-lightest;
+  padding: 8px 0;
+}
+
+.a_pagination__item {
+  display: inline-block;
+  a {
+    display: block;
+    min-width: 32px;
+    padding: 4px;
+    margin-left: -1px;
+    font-size: initial;
+    text-decoration: none;
+    color: $font-color;
+    background-color: $gray-color-lightest;
+    //border: 1px solid #$font-color;
+    cursor: pointer;
+    &:hover {
+      font-weight: bold;
+      //border: 1px solid $sec-color;
+      background-color: $sec-color;
+      color: $white-color;
+    }
+  }
+}
+
+//==========修飾符==========
+
+.a_pagination--previous a {
+  border-radius: 5px 0 0 5px;
+  &:before {
+    content: "";
+    margin-right: 5px;
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    vertical-align: middle;
+    background-image: url("../img/icon-arrow.svg");
+    background-size: cover;
+  }
+  &:hover {
+    &:before {
+      background-image: url("../img/icon-arrow-hover.svg");
+      background-size: cover;
+    }
+  }
+}
+
+.a_pagination--next a {
+  border-radius: 0 5px 5px 0;
+  &:after {
+    content: "";
+    margin-left: 5px;
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    vertical-align: middle;
+    background-image: url("../img/icon-arrow.svg");
+    background-size: cover;
+    -webkit-transform: rotate(-180deg);
+    transform: rotate(-180deg);
+  }
+  &:hover {
+    &:after {
+      background-image: url("../img/icon-arrow-hover.svg");
+      background-size: cover;
+    }
+  }
+}
+
+//==========RWD==========
+
+@media (max-width: 767px) {
+  .a_pagination__item {
+    a {
+      min-width: auto;
+      span {
+        display: none;
+      }
+    }
+  }
+}

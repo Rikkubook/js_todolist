@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Login</title>
+
+    <!--Bootstrap-->
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous"> -->
+
+    <!--Google 字體-->
+    <link href="https://fonts.googleapis.com/css?family=Gotu&display=swap" rel="stylesheet">
+
+    <!--自訂css-->
+    <link rel="stylesheet" href="css/all.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-4 col-sm-12">
+          <div class="m_card">
+            <h1 class="m_card__title">To Do List</h1>
+            <img class="m_card__img"src="" alt="">
+
+            <div class="m_kindList">
+              <ul>
+                <!-- <li>
+                  全部
+                  <span class="m_kindList__number m_kindList__number--all">
+                  24
+                  </span> -->
+                </li>
+                <li>
+                  未處理
+                  <span class="m_kindList__number m_kindList__number--unprocessed">
+                    12
+                  </span>
+                </li>
+                <!-- <li>
+                  已處理
+                  <span class="m_kindList__number m_kindList__number--process">
+                    12
+                  </span>
+                </li> -->
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-8 col-sm-12 l_leftItems">
+          <div class="m_textinput">
+            <input  class="a_inputs" type="text" placeholder="text" id="addInput">
+            <button class="a_button a_button--add" id="addButtom"></button>
+          </div>
+          <ul class="m_toDoList">
+            <li class="m_toDoList__item">
+              <div class="m_toDoList__item__text">
+                <!-- <p> <span></span>2/22 - 8:00 為貓咪吃東西</p> -->
+              </div>
+              <div class="m_toDoList__item__group">
+                <!-- <button class="a_button a_button--edit"></button>
+                <button class="a_button a_button--check"></button> -->
+                <button class="a_button a_button--reduce"></button>
+              </div>
+            </li>
+          </ul>
+          <!-- <div class="l_process">
+              <hr>
+              <h2>已完成  <button class="a_button a_button--delectAll ">全部刪除</button></h2>
+              <ul class="m_toDoList">
+                <li class="m_toDoList__item">
+                  <div class="m_toDoList__item__text m_toDoList__item__text--process">
+                    <p>2/22 - 8:00 為貓咪吃東西</p>
+                  </div>
+                  <div class="m_toDoList__item__group">
+                    <button class="a_button a_button--reduce"></button>
+                  </div>
+                </li>
+              </ul>
+          </div> -->
+        </div>
+      </div>
+  </body>
+ 
+  <script>
+    //1.取資料
+  let todolist = JSON.parse(localStorage.getItem('listData')) || [];
+
+  //2.更新事件
+  function upDate(todolist){
+    let len=todolist.length;
+
+    //2-0.更新List
+    for(let i=0; i<len;i++){
+      let liText= document.querySelector('.m_toDoList__item__text');
+      let liP=document.createElement('p');
+
+      if(i==0){
+        // 3.畫面更新(先產生第一個畫面)
+        liText.appendChild(liP);
+        liP.textContent=todolist[i].content;
+
+      }else{
+        //3.畫面更新(複製產生其他畫面)
+        let ul=document.querySelector('.m_toDoList');
+        let li=document.querySelector('.m_toDoList__item');
+        let clnItem=li.cloneNode(true);
+
+        ul.appendChild(clnItem);
+        clnItem.querySelector('p').textContent=todolist[i].content; 
+
+      }
+    }
+
+    //2-1.更新未處理比數
+    let unprocesse=document.querySelector('.m_kindList__number--unprocessed');
+    unprocesse.textContent=len;
+
+    //2-2.更新綁定
+    let reduceBtns=document.querySelectorAll('.a_button--reduce');
+    for(let i=0;i<reduceBtns.length;i++){
+      reduceBtns[i].addEventListener('click',reduc);
+    }
+
+  }
+
+  //3.載入後處理
+  upDate(todolist);
+
+  //2.添加事件
+  let addBtn=document.querySelector('#addButtom');
+  addBtn.addEventListener('click',add);
+
+  function add(){
+    let pushText=document.querySelector('#addInput').value;
+    let ul=document.querySelector('.m_toDoList');
+    let li=document.querySelectorAll('.m_toDoList__item');
+    var todo = {
+        content: pushText
+      };
+    
+    //2-1.刪除舊的節點
+    for(let i=0;i<todolist.length;i++){
+      let liText= document.querySelector('.m_toDoList__item__text');
+      let liP=document.querySelector('p');
+
+      if(i==0){
+        // 3.畫面更新(刪除並保留第一個外框)
+        liText.removeChild(liP);
+      }else{
+        //3.畫面更新(刪除其他節點)
+        ul.removeChild(li[i]);
+      }
+    }
+        
+    // //2-2.新增節點
+    todolist.push(todo);
+    console.log(pushText);
+    upDate(todolist); 
+    
+    //1.更新資料
+    localStorage.setItem('listData', JSON.stringify(todolist));
+  }
+
+  //2.刪除事件
+  function reduc(){
+    let ul=document.querySelector('.m_toDoList');
+    let liP=this.parentNode.parentNode.querySelector('.m_toDoList__item__text p');
+    let reduceItem=this.parentNode.parentNode;
+    let reduceText=reduceItem.querySelector('.m_toDoList__item__text p').textContent;
+
+    //2-1.刪除點擊的節點
+    if(todolist.length==1){
+      console.log(todolist.length);
+      ul.querySelector('.m_toDoList__item__text').removeChild(liP);
+    }else{
+      console.log(todolist.length);
+      ul.removeChild(reduceItem);
+    }
+
+    // 2-2.更新陣列
+    for(let i=0; i<todolist.length;i++){
+      if(reduceText==todolist[i].content){
+        todolist.splice(i, 1);
+      }
+    }
+    
+    //2-3.更新未處理比數
+    let unprocesse=document.querySelector('.m_kindList__number--unprocessed');
+    unprocesse.textContent=todolist.length;
+    
+    //1.更新資料
+    localStorage.setItem('listData', JSON.stringify(todolist));
+}
+  </script>
+</html>

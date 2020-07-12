@@ -1,0 +1,116 @@
+/*
+ 分子 表格
+*/
+
+//==========外框==========
+
+.l_table {
+  @include card;
+  padding: 0;
+}
+
+.l_tableScroll {
+  overflow: auto;
+  max-height: 50px;
+}
+.l_tableRadius {
+  border: 2px solid $main-color;
+  border-radius: 8px;
+  overflow: hidden;
+}
+//==========分子==========
+@mixin table {
+  width: 100.1%;
+  text-align: center;
+  th {
+    background-color: $main-color !important;
+    color: $white-color;
+    padding: 4px 8px;
+  }
+  td {
+    height: 40px;
+    padding: 4px 8px;
+  }
+}
+
+.m_tableRow {
+  @include table;
+  tr {
+    transition: 0.2s;
+    &:nth-child(even) {
+      background-color: lighten($gray-color-lightest, 7%);
+    }
+    &:hover {
+      background-color: lighten($sec-color, 30%);
+      color: $white-color;
+      transition: 0.2s;
+      //hover後 連結
+      .a_link {
+        color: $white-color;
+        border-bottom: 2px solid $white-color;
+        transition: 0.2s;
+        &:hover {
+          color: $sec-color;
+          border-bottom: 2px solid $sec-color;
+          transition: 0.2s;
+        }
+      }
+    }
+  }
+}
+
+.m_tableCol {
+  @include table;
+
+  th {
+    width: 150px;
+    vertical-align: middle;
+  }
+  td {
+    text-align: left;
+    padding: 8px 12px;
+    transition: 0.2s;
+    &:hover {
+      background-color: lighten($sec-color, 30%);
+      color: $white-color;
+      transition: 0.2s;
+      //hover後 連結
+      .a_link {
+        color: $white-color;
+        border-bottom: 2px solid $white-color;
+        transition: 0.2s;
+        &:hover {
+          color: $sec-color;
+          border-bottom: 2px solid $sec-color;
+          transition: 0.2s;
+        }
+      }
+
+      //hover後圖片
+      .m_tableCol__Img {
+        background-image: url("../img/icon-text-hover.svg");
+      }
+    }
+  }
+
+  .m_tableCol__Img {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    background-image: url("../img/icon-text.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+
+  p {
+    min-width: 80px;
+    display: inline-block;
+  }
+  .a_link {
+    min-width: 60px;
+  }
+}
+
+.m_tableCol__tr--even {
+  background-color: lighten($gray-color-lightest, 7%);
+}

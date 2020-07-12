@@ -1,0 +1,28 @@
+/*
+ 原子 進度條
+*/
+
+//==========原子==========
+
+.a_progress {
+  p {
+    color: $main-color;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    margin-bottom: 8px;
+  }
+  div {
+    line-height: 1;
+    font-size: 0;
+    border-radius: 10px;
+    background-color: $gray-color-lightest;
+    overflow: hidden;
+    span {
+      display: inline-block;
+      height: 16px;
+      border-radius: 10px;
+      background: linear-gradient(to right, $main-color, $sec-color);
+    }
+  }
+}

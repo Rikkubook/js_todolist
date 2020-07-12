@@ -1,0 +1,110 @@
+/*
+外來套件 DateRangePicker
+*/
+
+//==========日曆套件==========
+//外框
+.daterangepicker {
+  font-family: $font-family-sans;
+  color: $font-color;
+  border: 1px solid $font-color;
+  border-radius: 0px;
+  box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
+  &:before {
+    border-bottom: 7px solid $font-color;
+  }
+  &:hover {
+    border: 1px solid $main-color;
+    &:before {
+      border-bottom: 7px solid $main-color;
+    }
+  }
+}
+
+//區間
+.daterangepicker {
+  td {
+    &.in-range {
+      background-color: lighten($sec-color, 45%);
+    }
+    &.active {
+      background-color: $main-color;
+      &:hover {
+        background-color: $main-color;
+      }
+    }
+  }
+}
+
+//左右鍵
+.daterangepicker {
+  td.available,
+  th.available {
+    &:hover {
+      background-color: lighten($sec-color, 45%);
+      color: $font-color;
+      span {
+        border: solid $font-color;
+        border-width: 0 2px 2px 0;
+      }
+    }
+  }
+}
+
+//選擇日期
+.daterangepicker {
+  .drp-selected {
+    font-weight: bold;
+    color: $main-color;
+  }
+}
+
+//按鈕
+.daterangepicker {
+  .drp-buttons {
+    .btn {
+      font-size: $font-size-xs;
+      line-height: 1.5;
+    }
+
+    .applyBtn {
+      @include button;
+      margin-right: 0px;
+      transition: 0.4s;
+      &:focus {
+        outline: none;
+      }
+      &:hover {
+        transition: 0.4s;
+        background-color: $sec-color;
+      }
+    }
+
+    .cancelBtn {
+      @include button;
+      background-color: #df4141;
+      transition: 0.4s;
+      &:focus {
+        outline: none;
+      }
+      &:hover {
+        transition: 0.4s;
+        background-color: $error-color;
+      }
+    }
+  }
+}
+
+//==========RWD==========
+@media (max-width: 400px) {
+  .daterangepicker {
+    left: 20px !important;
+  }
+}
+
+@media (max-width: 564px) {
+  .daterangepicker .drp-selected {
+    display: block;
+    margin-bottom: 16px;
+  }
+}

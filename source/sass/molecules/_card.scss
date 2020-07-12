@@ -1,0 +1,78 @@
+/*
+ 分子卡片
+*/
+
+//==========共用==========
+
+@mixin card {
+  display: inline-block;
+  width: 100%;
+  background-color: $white-color;
+  box-shadow: $box-shadow;
+  padding: 40px;
+  border-radius: 8px;
+  overflow: hidden;
+  main {
+    margin-top: 40px;
+    margin-bottom: 40px;
+  }
+}
+
+//==========分子==========
+.m_card{
+  min-height: 700px;
+  padding: 10px 20px;
+  text-align: center;
+  background-color: $gray-color-lighter;
+  border-radius: 10px;
+  box-shadow: 0px 3px 6px rgba($gray-color-lighter,0.7);
+  position: relative;
+  .m_card__title{
+    font-family: 'Gotu', sans-serif;
+    font-size: 40px;
+    color: $font-color;
+    position: relative;
+    z-index: 1;
+    &::after{
+      content: "";
+      bottom: 0px;
+      display: block;
+      position: relative;
+      bottom: 30px;
+      z-index: -1;
+      border-bottom: 30px solid $main-color;
+    }
+  }
+  .m_card__img{
+    display: inline-block;
+    width: 200px;
+    height: 200px;
+    border: 5px solid $white-color;
+    border-radius: 50%;
+    background-image: url(../../img/user-img.jpeg);
+    background-size: cover;
+  }
+}
+
+
+
+
+.m_kindList__number--all{
+  color: $main-color;
+}
+.m_kindList__number--unprocessed{
+  color: $green-color;
+}
+.m_kindList__number--process{
+  color: $blue-color;
+}
+.m_kindList__number--delete{
+  color: $red-color;
+}
+//==========RWD==========
+
+@media (max-width: $breakpoint-sm) {
+  .m_card{
+    min-height: auto;
+  }
+}

@@ -1,0 +1,83 @@
+/*
+ 原子 按鈕
+*/
+
+//==========共用==========
+
+@mixin button {
+  display: inline-block;
+  margin-left: 10px;
+  padding: 10px;
+  font-size: 16px;
+  background-position: center center;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.a_button {
+  @include button;
+  &:hover {
+    transition: 0.4s;
+  }
+}
+
+//==========修飾符==========
+
+.a_button--add {
+  height: 40px;
+  width: 40px;
+  background: $button-color url("../img/icon-add.png") no-repeat;
+  background-color: $button-color ;
+  background-position: center center;
+  &:hover {
+    background: $button-color-hover url("../img/icon-add.png") no-repeat;
+    background-position: center center;
+  }
+}
+
+.a_button--reduce {
+  height: 40px;
+  width: 40px;
+  background:  url("../img/icon-reduce.png") no-repeat;
+  background-color: $error-color ;
+  background-position: center center;
+  &:hover {
+    background:  url("../img/icon-reduce.png") no-repeat;
+    background-color: #c95757;
+    background-position: center center;
+  }
+}
+
+.a_button--edit{
+  height: 40px;
+  width: 40px;
+  background:  $button-color url("../img/icon-edit.png") no-repeat;
+  background-position: center center;
+  &:hover {
+    background: $button-color-hover  url("../img/icon-edit.png")  no-repeat;
+    background-position: center center;
+  }
+}
+
+.a_button--check {
+  height: 40px;
+  width: 40px;
+  background:  url("../img/icon-check.png") no-repeat;
+  background-color: $blue-color ;
+  background-position: center center;
+  &:hover {
+    background:  url("../img/icon-check.png") no-repeat;
+    background-color: #5067b3;
+    background-position: center center;
+  }
+}
+
+.a_button--delectAll {
+  background: $error-color;
+  color: $white-color;
+  &:hover {
+    background-color: #c95757;
+  }
+}

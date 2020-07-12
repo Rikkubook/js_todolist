@@ -1,0 +1,117 @@
+/*
+ 原子 表單
+*/
+
+//==========原子==========
+
+.a_list__item {
+  position: relative;
+  padding: 0 8px 4px;
+  margin-bottom: 28px;
+  line-height: 28px;
+  color: $gray-color-lighter;
+  border-bottom: 1px dashed $gray-color-lighter;
+  .l_animPosition {
+    display: inline-block;
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    right: 16px;
+    bottom: 10px;
+    background: url("../img/list-normal.svg") no-repeat;
+    background-size: contain;
+  }
+}
+  
+//==========修飾符==========
+  
+.m_toDoList {
+  .m_toDoList__item{
+    display: flex;
+    justify-content: space-between;
+    border-radius: 10px;
+    padding: 10px 20px;
+    margin: 20px 0px;
+    background-color: #fff;
+    box-shadow: $box-shadow-lighter;
+  }
+  .m_toDoList__item:last-child{
+    margin-bottom: 0;
+  }
+  .m_toDoList__item__text{
+    p{
+      display: inline-block;
+      font-size: 20px;
+      color: $gray-color;
+      vertical-align: middle;
+      padding-left: 20px;
+      text-indent: -20px;
+      &::before{
+        content: "";
+        display: inline-block;
+        border-left: 10px solid $green-color;
+        height: 40px;
+        margin-right: 10px;
+        vertical-align: middle;
+      }
+    }
+
+
+  }
+  .m_toDoList__item__group{
+    font-size: 0;
+  }
+}
+  
+.m_kindList{
+  width: calc(100% - 40px);
+  position: absolute;
+  bottom: 10px;
+  li{
+    padding: 10px 10px;
+    margin-bottom: 10px;
+    font-size: 25px;
+    color: $font-color;
+    text-align: left;
+    border-radius: 10px;
+    background-color: rgba($white-color, 0.5);
+    box-shadow: $box-shadow-lighter;
+    position: relative;
+  }
+  .m_kindList__number{
+    min-width: 50px;
+    background:  rgba($white-color, 0.7);
+    padding: 5px 10px;
+    position: absolute;
+    right: 10px;
+    bottom: 5px;
+    font-family: 'Gotu', sans-serif;
+    text-align: right;
+  }
+}
+
+.m_toDoList .m_toDoList__item__text--process {
+  p::before{
+    border-left: 10px solid $blue-color;
+  }
+}
+  
+
+//==========RWD==========
+
+@media (max-width: $breakpoint-sm) {
+  .m_kindList{
+    margin-top: 20px;
+    width: 100%;
+    position: static;
+  }
+  .m_toDoList {
+    .m_toDoList__item{
+      flex-wrap: wrap;
+      .m_toDoList__item__group{
+        width: 100%;
+        text-align: right;
+      }
+    }
+  }
+}

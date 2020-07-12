@@ -1,0 +1,27 @@
+/*
+ 原子 連結
+*/
+
+//==========原子==========
+
+.a_link {
+  display: inline-block;
+  min-width: 80px;
+  padding: 4px 4px 2px;
+  margin-right: 5px;
+  text-align: center;
+  text-decoration: none;
+  color: $main-color;
+  border-bottom: 2px solid $main-color;
+  transition: 0.4s;
+  cursor: pointer;
+  &:hover {
+    text-decoration: none;
+    color: $sec-color;
+    border-bottom: 2px solid $sec-color;
+    transition: 0.4s;
+  }
+  &:last-child {
+    margin-right: 0px;
+  }
+}

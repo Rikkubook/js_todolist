@@ -1,0 +1,124 @@
+/*
+ 分子 跳窗
+*/
+
+//==========外框==========
+
+.l_bgGray {
+  position: relative;
+  max-height: 500px;
+  overflow: auto;
+  padding: 20px;
+  border-radius: 8px;
+  font-size: 12px;
+  background-color: $gray-color-lightest;
+}
+
+.l_popup {
+  @include card;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  max-width: 600px;
+  width: 70%;
+  transform: translate(-50%, -50%);
+}
+
+//==========共用==========
+
+@mixin popup {
+  background: rgba(0, 0, 0, 0.7);
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.2s;
+}
+
+//==========分子==========
+
+//分子子物件
+.m_popup__close {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  z-index: 1;
+  top: 6px;
+  right: 8px;
+  cursor: pointer;
+  &:before {
+    content: "";
+    display: inline-block;
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    border-bottom: 2px solid $white-color;
+    border-radius: 8px;
+    transform: rotate(45deg);
+  }
+  &:after {
+    content: "";
+    display: inline-block;
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    border-bottom: 2px solid $white-color;
+    border-radius: 8px;
+    transform: rotate(-45deg);
+  }
+}
+
+//更新頁 更新歷程
+.m_popupPress {
+  @include popup;
+}
+
+//更新頁 更新錯誤
+.m_popupError {
+  @include popup;
+}
+
+//搜尋頁 更版詳情
+.m_popupDetail {
+  @include popup;
+  .l_popup {
+    max-width: 800px;
+  }
+  p {
+    padding-bottom: 4px;
+  }
+}
+//==========特有原子==========
+
+.a_errorImg {
+  display: inline-block;
+  width: 48px;
+  transform: rotate(-30deg);
+  position: relative;
+  z-index: 1;
+}
+
+//==========修飾符==========
+
+.m_popup--show {
+  transition: 0.4s;
+  opacity: 1;
+  visibility: visible;
+}
+
+//==========RWD==========
+@media (max-width: 767px) {
+  .l_popup {
+    width: 90%;
+    main {
+      margin-top: 20px;
+    }
+  }
+  .l_bgGray {
+    max-height: 300px;
+  }
+}

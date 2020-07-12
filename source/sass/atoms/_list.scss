@@ -1,0 +1,109 @@
+/*
+ 原子 表單
+*/
+
+//==========原子==========
+
+.a_list__item {
+  position: relative;
+  padding: 0 8px 4px;
+  margin-bottom: 28px;
+  line-height: 28px;
+  color: $gray-color-lighter;
+  border-bottom: 1px dashed $gray-color-lighter;
+  .l_animPosition {
+    display: inline-block;
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    right: 16px;
+    bottom: 10px;
+    background: url("../img/list-normal.svg") no-repeat;
+    background-size: contain;
+  }
+}
+
+//==========修飾符==========
+
+.a_list__item--success {
+  font-weight: bold;
+  color: $success-color;
+  border-bottom: 1px dashed $success-color;
+  .l_animPosition {
+    display: inline-block;
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    right: 8px;
+    bottom: 0;
+    background: url("../img/list-success.svg") no-repeat;
+    background-size: contain;
+  }
+}
+
+.a_list__item--active {
+  font-weight: bold;
+  font-size: $font-size-l;
+  color: $main-color;
+  border-bottom: 1px dashed $main-color;
+  transition: 0.4s;
+  .l_animPosition {
+    display: inline-block;
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    right: 8px;
+    bottom: -10px;
+    background: none;
+  }
+  .l_animHidden {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    overflow: hidden;
+    animation: animHidden 3s infinite;
+    &:after {
+      content: "";
+      display: inline-block;
+      width: 30px;
+      height: 30px;
+      background: url("../img/list-active.svg") no-repeat;
+      background-size: contain;
+    }
+  }
+}
+
+.a_list__item--error {
+  font-weight: bold;
+  font-size: $font-size-l;
+  color: $error-color;
+  border-bottom: 1px dashed $error-color;
+  .l_animPosition {
+    display: inline-block;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    right: 10px;
+    bottom: 6px;
+    background: url("../img/list-error.svg") no-repeat;
+    background-size: contain;
+  }
+}
+
+@keyframes animHidden {
+  from {
+    width: 0px;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+//==========RWD==========
+
+@media (max-width: 767px) {
+  .a_list__item--active,
+  .a_list__item--error {
+    font-size: $font-size-m;
+  }
+}
